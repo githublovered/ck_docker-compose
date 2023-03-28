@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<yandex>
+    <profiles>
+        <default>
+            <max_memory_usage>10000000000</max_memory_usage>
+            <load_balancing>random</load_balancing>
+        </default>
+        <readonly>
+            <readonly>1</readonly>
+        </readonly>
+    </profiles>
+    <users>
+        <default>
+            <password_sha256_hex>96f26ee8012f3ef186664eb6c0ecc5a714a17dc874e2ce9f0c029ea6a0330d58</password_sha256_hex> #OWdqYxS0
+            <networks>
+                <ip>::/0</ip>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </default>
+
+        <asec>
+            <password_sha256_hex>45bcabda535ecc03cd25d4419983c21be43f6458530c780b3222058bfc127ff0</password_sha256_hex> #O1wq7pgl
+            <networks incl="networks" replace="replace">
+                <ip>::/0</ip>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </asec>
+    </users>
+
+    <!-- Quotas. -->
+    <quotas>
+        <!-- Name of quota. -->
+        <default>
+            <!-- Limits for time interval. You could specify many intervals with different limits. -->
+            <interval>
+                <!-- Length of interval. -->
+                <duration>3600</duration>
+
+                <!-- No limits. Just calculate resource usage for time interval. -->
+                <queries>0</queries>
+                <errors>0</errors>
+                <result_rows>0</result_rows>
+                <read_rows>0</read_rows>
+                <execution_time>0</execution_time>
+            </interval>
+        </default>
+    </quotas>
+</yandex>

@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  clickhouse:
+    image: yandex/clickhouse-server:21.3.20-alpine
+    container_name: clickhouse
+    restart: always
+    networks:
+      - ck-network
+    ports:
+      - "8123:8123"
+      - "9001:9000"
+    volumes:
+      # 默认配置
+      - ./config/docker_related_config.xml:/etc/clickhouse-server/config.d/docker_related_config.xml:rw
+      - ./config/config.xml:/etc/clickhouse-server/config.xml:rw
+      - ./config/users.xml:/etc/clickhouse-server/users.xml:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /data/clickhouse/log:/var/log/clickhouse-server # 运行日志
+      - /data/clickhouse:/var/lib/clickhouse:rw # 数据持久
+
+networks:
+  ck-network:
+    external:
+      name: platform_network
